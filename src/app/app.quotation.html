@@ -1,0 +1,33 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+        <md-form-field floatPlaceholder="never">
+            <input mdInput #filter placeholder="Filter users">
+        </md-form-field>
+        <button md-button>Create PDF</button>
+    </div>
+
+    <md-table #table [dataSource]="dataSource">
+        <ng-container mdColumnDef="Id">
+            <md-header-cell *mdHeaderCellDef> ID </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.id}} </md-cell>
+        </ng-container>
+
+        <ng-container mdColumnDef="cost">
+            <md-header-cell *mdHeaderCellDef> Cost </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.cost}} </md-cell>
+        </ng-container>
+
+        <ng-container mdColumnDef="item">
+            <md-header-cell *mdHeaderCellDef> Item </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.item}} </md-cell>
+        </ng-container>
+
+        <ng-container mdColumnDef="category">
+            <md-header-cell *mdHeaderCellDef> Category </md-header-cell>
+            <md-cell *mdCellDef="let row"> {{row.category}} </md-cell>
+        </ng-container>
+
+        <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+    </md-table>
+</div>
