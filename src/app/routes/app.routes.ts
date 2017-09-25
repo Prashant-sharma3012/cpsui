@@ -6,6 +6,8 @@ import { Appquote } from '../app.quotation';
 import { Admin } from '../app.admin';
 import { AddVendor } from '../app.addvendor';
 import { CreateQuote } from '../app.create.quote';
+import { CreateProject } from '../app.create.project';
+import { Quotes } from '../app.quotes';
 
 
 
@@ -26,6 +28,12 @@ export const RouteDefinitions: [object] = [
         CanActivateAuthGuard
         ]},
         {path: 'review', component: Appquote, canActivate: [
+        CanActivateAuthGuard
+        ]},
+        {path: 'project', component: CreateProject, canActivate: [
+        CanActivateAuthGuard
+        ]},
+        {path: 'quotes', component: Quotes, canActivate: [
         CanActivateAuthGuard
         ]}
     ];

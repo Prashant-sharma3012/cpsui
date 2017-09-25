@@ -11,6 +11,13 @@ import {MdToolbarModule} from '@angular/material';
 import {MdListModule} from '@angular/material';
 import {MdGridListModule} from '@angular/material';
 import {MdTableModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
+import {MatStepperModule} from '@angular/material';
+import {MdDatepickerModule} from '@angular/material';
+import {MdNativeDateModule} from '@angular/material';
+import {MdCheckboxModule} from '@angular/material';
+import {MdExpansionModule} from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { AddItem } from './app.additem';
@@ -19,7 +26,8 @@ import { Appquote } from './app.quotation';
 import { Admin } from './app.admin';
 import { AddVendor } from './app.addvendor';
 import { CreateQuote } from './app.create.quote';
-
+import { CreateProject } from './app.create.project';
+import { Quotes } from './app.quotes';
 
 import { RouterModule} from '@angular/router';
 import { RouteDefinitions } from './routes/app.routes';
@@ -41,7 +49,9 @@ import 'hammerjs';
     Appquote,
     Admin,
     AddVendor,
-    CreateQuote
+    CreateQuote,
+    CreateProject,
+    Quotes
   ],
   imports: [
     BrowserModule,
@@ -57,6 +67,12 @@ import 'hammerjs';
     MdGridListModule,
     MdSidenavModule,
     MdTableModule,
+    MdCardModule,
+    MatStepperModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    MdCheckboxModule,
+    MdExpansionModule,
     RouterModule.forRoot(RouteDefinitions)
   ],
   providers: [CanActivateAuthGuard],

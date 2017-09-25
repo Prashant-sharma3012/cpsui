@@ -22,6 +22,10 @@ constructor(private router: Router) {}
         this.router.navigate(['/quote'])
     }
 
+    createProj(){
+        this.router.navigate(['/quotes'])
+    }
+
 }
 
 

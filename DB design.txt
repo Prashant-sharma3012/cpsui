@@ -1,0 +1,59 @@
+1) 
+item{
+    item number: number,
+    item name: string,
+    category: string,
+    sub category: string,
+    cost: number
+    parameters:[
+        {
+            key:string,
+            value:string
+        }
+    ]
+}
+
+2)
+vendor{
+    vendor number:number,
+    vendor name: string,
+    address:string,
+    location:string,
+    items:[items]
+}
+
+3) 
+item-vendor{
+    item: string,
+    item number:number,
+    vendor name:[],
+    vendor number:[]
+}
+4)
+processes{
+    process name:string,
+    process time: number,
+    items:[]
+}
+5)
+project{
+    process:[processes],
+    completion time:number,
+    vendors:[]
+    items:[]
+}
+
+6) quotation{
+    For:string,
+    items:[],
+    vendors:[]
+    rows:[{
+        item:string,
+        category:string,
+        sub category:string,
+        qty:number,
+        cost:number
+        vendor:string
+    }]
+
+}

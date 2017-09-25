@@ -1,0 +1,271 @@
+<md-sidenav-container class="example-sidenav-fab-container">
+    <md-horizontal-stepper [linear]="isLinear">
+        <md-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template mdStepLabel>Project Details</ng-template>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput placeholder="Project name" formControlName="projName" required>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput placeholder="Project type" formControlName="projType" required>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput placeholder="Description" formControlName="projDesc" required>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput placeholder="Client" formControlName="clientName" required>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput [mdDatepicker]="picker" placeholder="Start Date" formControlName="projStartDate" required>
+                                <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                                <md-datepicker #picker></md-datepicker>
+                            </md-form-field>
+                            <md-form-field>
+                                <input mdInput [mdDatepicker]="picker1" placeholder="End Date" formControlName="projEndDate" required>
+                                <md-datepicker-toggle mdSuffix [for]="picker1"></md-datepicker-toggle>
+                                <md-datepicker #picker1></md-datepicker>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <md-form-field>
+                                <input mdInput placeholder="Location" formControlName="location" required>
+                            </md-form-field>
+                        </td>
+                    </tr>
+                    <div>
+                        <button md-button mdStepperNext>Next</button>
+                    </div>
+                </table>
+            </form>
+        </md-step>
+        <md-step>
+            <form>
+                <ng-template mdStepLabel>Add processes</ng-template>
+                <div class="example-container">
+                    <div class="example-header">
+                        <md-form-field floatPlaceholder="never">
+                            <input mdInput placeholder="Find processes">
+                        </md-form-field>
+                    </div>
+                    <div>
+                        <div class="example-container mat-elevation-z8">
+                            <md-table #table [dataSource]="dataSource">
+                                <ng-container mdColumnDef="id">
+                                    <md-header-cell *mdHeaderCellDef> Id </md-header-cell>
+                                    <md-cell *mdCellDef="let process">
+                                        <md-checkbox></md-checkbox> {{process.id}} </md-cell>
+                                </ng-container>
+
+                                <ng-container mdColumnDef="process">
+                                    <md-header-cell *mdHeaderCellDef> Process </md-header-cell>
+                                    <md-cell *mdCellDef="let process"> {{process.process}} </md-cell>
+                                </ng-container>
+
+                                <ng-container mdColumnDef="Description">
+                                    <md-header-cell *mdHeaderCellDef> Description </md-header-cell>
+                                    <md-cell *mdCellDef="let process"> {{process.desc}} </md-cell>
+                                </ng-container>
+
+                                <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+                                <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+                            </md-table>
+                        </div>
+                    </div>
+                    <div>
+                        <button md-button mdStepperPrevious>Back</button>
+                        <button md-button mdStepperNext>Next</button>
+                    </div>
+                </div>
+            </form>
+        </md-step>
+        <md-step>
+            <form>
+                <ng-template mdStepLabel>Check Items</ng-template>
+                <div>
+                    <div class="example-container mat-elevation-z8">
+                        <md-table #table [dataSource]="dataSource1">
+                            <ng-container mdColumnDef="id">
+                                <md-header-cell *mdHeaderCellDef> Id </md-header-cell>
+                                <md-cell *mdCellDef="let item">
+                                    {{item.id}} </md-cell>
+                            </ng-container>
+
+                            <ng-container mdColumnDef="process">
+                                <md-header-cell *mdHeaderCellDef> Item </md-header-cell>
+                                <md-cell *mdCellDef="let item"> {{item.item}} </md-cell>
+                            </ng-container>
+
+                            <ng-container mdColumnDef="Description">
+                                <md-header-cell *mdHeaderCellDef> Quantity </md-header-cell>
+                                <md-cell *mdCellDef="let item"> {{item.qty}} </md-cell>
+                            </ng-container>
+
+                            <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+                            <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+                        </md-table>
+                    </div>
+                </div>
+                <div>
+                    <button md-button mdStepperPrevious>Back</button>
+                    <button md-button mdStepperNext>Next</button>
+                </div>
+            </form>
+        </md-step>
+        <md-step>
+            <ng-template mdStepLabel>Check and submit</ng-template>
+            <md-accordion class="example-headers-align">
+                <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+                    <md-expansion-panel-header>
+                        <md-panel-title>
+                            Project Details
+                        </md-panel-title>
+                        <md-panel-description>
+                            <md-icon>chrome_reader_mode</md-icon>
+                        </md-panel-description>
+                    </md-expansion-panel-header>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <p>Project</p>
+                                    <input mdInput disabled value="{{Project}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <p>Project type</p>
+                                    <input mdInput disabled value="{{type}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <p>Client</p>
+                                    <input mdInput disabled value="{{client}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <p>Details</p>
+                                    <input mdInput disabled value="{{description}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <p>Start Date</p>
+                                    <input mdInput disabled value="{{start_date}}">
+                                </md-form-field>
+                                <md-form-field>
+                                    <p>End date</p>
+                                    <input mdInput disabled value="{{end_date}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>location</p>
+                                <input mdInput disabled value="{{location}}">
+                            </td>
+                        </tr>
+                    </table>
+                </md-expansion-panel>
+
+                <md-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+                    <md-expansion-panel-header>
+                        <md-panel-title>
+                            Process Attached
+                        </md-panel-title>
+                        <md-panel-description>
+                            <md-icon>extension</md-icon>
+                        </md-panel-description>
+                    </md-expansion-panel-header>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>ID</td>
+                            <td>Process</td>
+                            <td>Descrition</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <input mdInput disabled value="{{process}}">
+                                </md-form-field>
+                            </td>
+                            <td>
+                                <md-form-field>
+                                    <input mdInput disabled value="{{process}}">
+                                </md-form-field>
+                            </td>
+                            <td>
+                                <md-form-field>
+                                    <input mdInput disabled value="{{process}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </md-expansion-panel>
+
+                <md-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+                    <md-expansion-panel-header>
+                        <md-panel-title>
+                            Items Attached
+                        </md-panel-title>
+                        <md-panel-description>
+                            <md-icon>view_module</md-icon>
+                        </md-panel-description>
+                    </md-expansion-panel-header>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>Total Items</td>
+                            <td>Total Cost</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <md-form-field>
+                                    <input mdInput disabled value="{{process}}">
+                                </md-form-field>
+                            </td>
+                            <td>
+                                <md-form-field>
+                                    <input mdInput disabled value="{{process}}">
+                                </md-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </md-expansion-panel>
+            </md-accordion>
+            <div>
+                <button md-button mdStepperPrevious>Back</button>
+                <button md-button>Submit</button>
+            </div>
+        </md-step>
+    </md-horizontal-stepper>
+</md-sidenav-container>
