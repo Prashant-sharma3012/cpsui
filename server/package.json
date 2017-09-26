@@ -1,0 +1,22 @@
+{
+  "name": "cps",
+  "version": "1.0.0",
+  "description": "work for masters",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "team of masters",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongodb": "^2.2.30",
+    "validator": "^8.0.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.2.6"
+  }
+}
