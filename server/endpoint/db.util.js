@@ -19,6 +19,7 @@ let isConnected = () => {
         return true;
     } else {
         return false;
+
     }
 }
 
